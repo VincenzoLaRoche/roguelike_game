@@ -2,8 +2,8 @@ import pygame
 
 
 # DISPLAY VALUES
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 1280
 CLOCK = pygame.time.Clock()
 LIMIT_FPS = 60
 TITLE = "Rogue like test game"
@@ -13,3 +13,6 @@ TITLE = "Rogue like test game"
 PLAYER_X = SCREEN_WIDTH/2
 PLAYER_Y = SCREEN_HEIGHT/2
 
+
+# MAP VALUES
+TILE_SIZE = 32
