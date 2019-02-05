@@ -1,7 +1,10 @@
+import pygame
+
 
 # DISPLAY VALUES
-SCREEN_WIDTH = 80
-SCREEN_HEIGHT = 50
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 600
+CLOCK = pygame.time.Clock()
 LIMIT_FPS = 60
 TITLE = "Rogue like test game"
 
