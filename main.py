@@ -4,10 +4,15 @@ import globals,entity, os
 
 # PYGAME INITIALISATION
 pygame.init()
+pygame.mixer.init()
+pygame.display.set_caption(globals.TITLE)
 main_surface = pygame.display.set_mode((globals.SCREEN_WIDTH, globals.SCREEN_HEIGHT))
 
 
+all_sprites = pygame.sprite.Group()
 player = entity.Entity(20, 20, 4, globals.PLAYER_IMG)
+all_sprites.add(player)
+
 
 
 
@@ -29,18 +34,25 @@ def grid():
 
 
 def main():
-
     grid()
 
     running = True
     while running:
         globals.CLOCK.tick(globals.LIMIT_FPS)
 
-        # FUNCTION CALLS
-        player.move()
-        player.update()
+        # UPDATE
+        all_sprites.update()
 
-        # DRAW SPRITES TO SCREEN
+        # DRAW
+        main_surface.fill((0, 255, 255))
+        all_sprites.draw(main_surface)
+
+        for event in pygame.event.get():
+            # check for closing window
+            if event.type == pygame.QUIT:
+                running = False
+
+        # DISPLAY FLIP
         pygame.display.flip()
 
     pygame.quit()

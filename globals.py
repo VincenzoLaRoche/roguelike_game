@@ -17,5 +17,5 @@ GAME_FOLDER = os.path.dirname(__file__)
 IMG_FOLDER = os.path.join(GAME_FOLDER, 'img')
 
 # SPRITES
-PLAYER_IMG = pygame.image.load(os.path.join(IMG_FOLDER,))
+PLAYER_IMG = pygame.image.load(os.path.join(IMG_FOLDER, 'player.jpg'))
 
