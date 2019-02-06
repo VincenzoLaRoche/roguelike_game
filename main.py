@@ -1,30 +1,21 @@
 import pygame
 import libtcodpy as libtcod
-import globals
-
-PLAYER_X = 20
-PLAYER_Y = 20
+import globals,entity, os
 
 # PYGAME INITIALISATION
 pygame.init()
 main_surface = pygame.display.set_mode((globals.SCREEN_WIDTH, globals.SCREEN_HEIGHT))
 
 
+player = entity.Entity(20, 20, 4, globals.PLAYER_IMG)
+
+
+
 # INPUT SCANNING
 def handle_keys():
-    global PLAYER_X, PLAYER_Y
+    pass
 
-    for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
-            # PLAYER MOVEMENT
-            if event.key == pygame.K_UP:
-                PLAYER_Y -= 1
-            if event.key == pygame.K_DOWN:
-                PLAYER_Y += 1
-            if event.key == pygame.K_LEFT:
-                PLAYER_X -= 1
-            if event.key == pygame.K_RIGHT:
-                PLAYER_X += 1
+
 
 
 # DRAWS GRID ON SCREEN TO ILLUSTRATE TILES
@@ -38,17 +29,20 @@ def grid():
 
 
 def main():
-    globals.CLOCK.tick(globals.LIMIT_FPS)
+
     grid()
 
-    while True:
-        handle_keys()
+    running = True
+    while running:
+        globals.CLOCK.tick(globals.LIMIT_FPS)
 
-        event = pygame.event.poll()
-        if event.type == pygame.QUIT:
-            break
+        # FUNCTION CALLS
+        player.move()
+        player.update()
 
+        # DRAW SPRITES TO SCREEN
         pygame.display.flip()
+
     pygame.quit()
 
 

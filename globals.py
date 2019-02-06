@@ -1,18 +1,21 @@
 import pygame
+import os
 
 
 # DISPLAY VALUES
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 1280
 CLOCK = pygame.time.Clock()
-LIMIT_FPS = 60
+LIMIT_FPS = 120
 TITLE = "Rogue like test game"
-
-
-# PLAYER VALUES
-PLAYER_X = SCREEN_WIDTH/2
-PLAYER_Y = SCREEN_HEIGHT/2
-
 
 # MAP VALUES
 TILE_SIZE = 32
+
+# FILE LOCATIONS
+GAME_FOLDER = os.path.dirname(__file__)
+IMG_FOLDER = os.path.join(GAME_FOLDER, 'img')
+
+# SPRITES
+PLAYER_IMG = pygame.image.load(os.path.join(IMG_FOLDER,))
+
