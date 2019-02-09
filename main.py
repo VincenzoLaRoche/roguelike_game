@@ -1,6 +1,7 @@
 import pygame
 import libtcodpy as libtcod
-import globals,entity, os
+import globals
+from player import Player
 
 # PYGAME INITIALISATION
 pygame.init()
@@ -8,19 +9,15 @@ pygame.mixer.init()
 pygame.display.set_caption(globals.TITLE)
 main_surface = pygame.display.set_mode((globals.SCREEN_WIDTH, globals.SCREEN_HEIGHT))
 
-
-all_sprites = pygame.sprite.Group()
-player = entity.Entity(20, 20, 4, globals.PLAYER_IMG)
-all_sprites.add(player)
-
-
+# SPRITE GROUP
+player_sprites = pygame.sprite.Group()
+player = Player(20, 20, globals.PLAYER_IMG, 0)
+player_sprites.add(player)
 
 
 # INPUT SCANNING
 def handle_keys():
     pass
-
-
 
 
 # DRAWS GRID ON SCREEN TO ILLUSTRATE TILES
@@ -41,11 +38,11 @@ def main():
         globals.CLOCK.tick(globals.LIMIT_FPS)
 
         # UPDATE
-        all_sprites.update()
+        player_sprites.update()
 
         # DRAW
         main_surface.fill((0, 255, 255))
-        all_sprites.draw(main_surface)
+        player_sprites.draw(main_surface)
 
         for event in pygame.event.get():
             # check for closing window
